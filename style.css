@@ -125,7 +125,7 @@ td {
     border: 2px solid blue;
 }
 
-.fadein, .fadeout {
+.fadeout {
     opacity: 0;
     -moz-transition: opacity 0.4s ease-in-out;
     -o-transition: opacity 0.4s ease-in-out;
@@ -135,4 +135,8 @@ td {
 
 .fadein {
     opacity: 1;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 }
