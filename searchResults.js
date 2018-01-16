@@ -1,6 +1,19 @@
 const CSSTransitionGroup = React.addons.CSSTransitionGroup;
 const TransitionGroup = React.addons.TransitionGroup;
 
+  const defaultStyle = {
+    transition: `opacity ${duration}ms ease-in-out`,
+    opacity: 0,
+    padding: 20,
+    display: 'inline-block',
+    backgroundColor: '#8787d8'
+  }
+
+  const transitionStyles = {
+    entering: { opacity: 0 },
+    entered:  { opacity: 1 },
+  };
+  
 class ReactBox extends React.Component {
 
     constructor() {
@@ -14,7 +27,9 @@ class ReactBox extends React.Component {
         }
     }
     clickHandler() {
-        this.setState({opacity:1},()=> setTimeout(() => this.setState({opacity:0}),4000))
+        this.setState(({ visible }) => ({
+            visible: !visible
+          }))
         /*const el = this.getElementsByClassName("Fader");
         if ($(el).hasClass("fadeout"))
             $(el).removeClass("fadeout").addClass("fadein");
@@ -31,7 +46,6 @@ class ReactBox extends React.Component {
                 })
             }.bind(this)
         })
-        console.log(this.state.results)
     }
 
     keyupHandler(event) {
@@ -40,6 +54,9 @@ class ReactBox extends React.Component {
         })
         this.displayList()
     }
+
+
+    
     render() {
         return (<tr>
             <tr>
@@ -64,6 +81,7 @@ class ReactBox extends React.Component {
 
                                 })}
                             </div>
+                            <TransitionGroup timeout={500}>
                             <div id="Fader" className="Fader fadeout">
                                 <div className="descr">
                                     {item.volumeInfo.description}
@@ -75,6 +93,7 @@ class ReactBox extends React.Component {
                                     Publish Date:{item.volumeInfo.publishedDate}
                                 </div>
                             </div>
+                            </TransitionGroup>
                         </div>
                     </td>
                 })}
