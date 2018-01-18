@@ -1,19 +1,21 @@
 const CSSTransitionGroup = React.addons.CSSTransitionGroup;
 const TransitionGroup = React.addons.TransitionGroup;
 
-  const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
-    opacity: 0,
-    padding: 20,
-    display: 'inline-block',
-    backgroundColor: '#8787d8'
-  }
+const Child = () => (
+    <div id="Fader" className="Fader fadeout">
+        <div className="descr">
+            {item.volumeInfo.description}
+        </div>
+        <div className="publisher">
+            Publisher:{item.volumeInfo.publisher}
+        </div>
+        <div className="publishDate">
+            Publish Date:{item.volumeInfo.publishedDate}
+        </div>
+    </div>
+)
 
-  const transitionStyles = {
-    entering: { opacity: 0 },
-    entered:  { opacity: 1 },
-  };
-  
+
 class ReactBox extends React.Component {
 
     constructor() {
@@ -29,12 +31,8 @@ class ReactBox extends React.Component {
     clickHandler() {
         this.setState(({ visible }) => ({
             visible: !visible
-          }))
-        /*const el = this.getElementsByClassName("Fader");
-        if ($(el).hasClass("fadeout"))
-            $(el).removeClass("fadeout").addClass("fadein");
-        else
-            $(el).removeClass("fadein").addClass("fadeout");*/
+        }))
+
     }
     displayList() {
         var booktitle = this.state.value
@@ -55,8 +53,6 @@ class ReactBox extends React.Component {
         this.displayList()
     }
 
-
-    
     render() {
         return (<tr>
             <tr>
@@ -74,6 +70,7 @@ class ReactBox extends React.Component {
                             <div className="title">
                                 {item.volumeInfo.title}
                             </div>
+
                             <div className="authors">
                                 {item.volumeInfo.authors.map(function (names) {
 
@@ -81,19 +78,7 @@ class ReactBox extends React.Component {
 
                                 })}
                             </div>
-                            <TransitionGroup timeout={500}>
-                            <div id="Fader" className="Fader fadeout">
-                                <div className="descr">
-                                    {item.volumeInfo.description}
-                                </div>
-                                <div className="publisher">
-                                    Publisher:{item.volumeInfo.publisher}
-                                </div>
-                                <div className="publishDate">
-                                    Publish Date:{item.volumeInfo.publishedDate}
-                                </div>
-                            </div>
-                            </TransitionGroup>
+                            {!this.state.visible && <Child action={item} />}
                         </div>
                     </td>
                 })}
@@ -102,7 +87,6 @@ class ReactBox extends React.Component {
         </tr>
         )
     }
-
 }
 ReactDOM.render(<ReactBox />, document.getElementById('myDiv'))
 
