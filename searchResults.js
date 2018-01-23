@@ -17,6 +17,7 @@ class ReactBox extends React.Component {
         const childDivs = event.target.children;
         console.log(childDivs)
         for(let i = 0; i < childDivs.length; i++) {
+
             if(childDivs[i].classList.contains('hidden')) {
                 childDivs[i].classList.remove('hidden');
              }
