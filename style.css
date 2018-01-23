@@ -140,3 +140,6 @@ td {
     -webkit-transition: opacity 0.4s ease-in-out;
     transition: opacity 0.4s ease-in-out;
 }
+.hidden{
+    display: none;
+}

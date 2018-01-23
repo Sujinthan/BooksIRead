@@ -13,7 +13,14 @@ class ReactBox extends React.Component {
             visible: false
         }
     }
-    clickHandler() {
+    clickHandler(event) {
+        const childDivs = event.target.children;
+        console.log(childDivs)
+        for(let i = 0; i < childDivs.length; i++) {
+            if(childDivs[i].classList.contains('hidden')) {
+                childDivs[i].classList.remove('hidden');
+             }
+        }
         this.setState(({ visible }) => ({
             visible: !visible
         }))
@@ -49,7 +56,7 @@ class ReactBox extends React.Component {
                 <td className="MainContainer"> {this.state.results.map((item) => {
                     return <td className="container" >
 
-                        <div className="book" onClick={() => this.setState({visible:!visible})}>
+                        <div className="book" onClick={this.handleClick}>
                             <div className="bookImage">
                                 <img src={String(item.volumeInfo.imageLinks.thumbnail)} />
                             </div>
@@ -65,7 +72,7 @@ class ReactBox extends React.Component {
                                 })}
                             </div>
 
-                            <div style={{display:(visible ? 'block' :'none')}}>
+                            <div className="hidden" >
                                 <div className="descr">
                                     {item.volumeInfo.description}
                                 </div>
