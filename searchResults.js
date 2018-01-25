@@ -17,10 +17,15 @@ class ReactBox extends React.Component {
         const childDivs = event.target.children;
         console.log(childDivs)
         for(let i = 0; i < childDivs.length; i++) {
+            if (childDivs[i].className == 'hidden'){
+                childDivs[i].className='show'
+            }else{
+                childDivs[i].className='hidden'
+            }
+            //childDivs[i].classList.toggle('hidden')
+            //childDivs[i].classList.toggle('show')
+           
 
-            if(childDivs[i].classList.contains('hidden')) {
-                childDivs[i].classList.remove('hidden');
-             }
         }
         this.setState(({ visible }) => ({
             visible: !visible
@@ -32,6 +37,7 @@ class ReactBox extends React.Component {
         $.ajax({
             url: "https://www.googleapis.com/books/v1/volumes?q=" + booktitle + "&key=AIzaSyBV2L07EDS5v9VShRn-tV0FITu9Py5hygQ",
             success: function (data) {
+
                 this.setState({
                     results: data.items
                 })
