@@ -141,8 +141,13 @@ td {
     transition: opacity 0.4s ease-in-out;
 }
 .hidden{
+
     display: none;
 }
 .show{
-    display: inline;
+    position: absolute;
+    bottom: 0%;
+    width:100%;
+    top:100%;
+    display: table-cell;
 }
