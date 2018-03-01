@@ -60,7 +60,9 @@ class ReactBox extends React.Component {
                     return <td className="container">
                         <div className="book" onClick={this.handleClick(item)}>
                             <div className="bookImage">
-                                <img src={String(item.volumeInfo.imageLinks.thumbnail)} />
+
+                                    <img src={String(item.volumeInfo.imageLinks.thumbnail)} />
+
                             </div>
                             <div className="title">
                                 {item.volumeInfo.title}
