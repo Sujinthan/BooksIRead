@@ -11,12 +11,37 @@ class ReactBox extends React.Component {
         this.state = {
             value: '',
             results: [],//where the results will be stored
-            item_detail: [],
+            item_detail:null,
             visible: false
         }
     }
     clickHandler(item) {
-        console.log(this.state.item_detail)
+        var holder = document.createElement("div")
+        holder.className="holder"
+        var btn = document.createElement("div");        // Create a <div> element
+        btn.className ="description"
+        var t = document.createTextNode(item.volumeInfo.description);       // Create a text node
+        btn.appendChild(t);
+        var main = document.getElementById("hidden_descritpion")
+
+        
+        if(this.state.item_detail == null ){
+            this.setState({item_detail:item})
+            main.appendChild(btn)
+        }else if(this.state.item_detail.id == item.id){
+            while (main.firstChild) {
+                main.removeChild(main.firstChild);
+            }
+            this.setState({item_detail:''})
+
+        }else{
+            while (main.firstChild) {
+                main.removeChild(main.firstChild);
+            }
+            main.appendChild(btn)
+            this.setState({item_detail:item})
+        }
+        
     }
     checkClick(e, notyId) {
         alert(notyId);
@@ -31,15 +56,7 @@ class ReactBox extends React.Component {
         .catch((error)=>{
             console.error(error);
         });
-        /*$.ajax({
-            url: "https://www.googleapis.com/books/v1/volumes?q=" + booktitle + "&key=AIzaSyBV2L07EDS5v9VShRn-tV0FITu9Py5hygQ",
-            success: function (data) {
 
-                this.setState({
-                    results: data.items
-                })
-            }.bind(this)
-        })*/
     }
 
     keyupHandler(event) {
@@ -58,9 +75,9 @@ class ReactBox extends React.Component {
             <tr>
                 <td className="MainContainer"> {this.state.results.map((item) => {
                     return <td className="container">
-                        <div className="book" onClick={this.handleClick(item)}>
+                        <div className="book" onClick={() => {this.handleClick(item)}}>
                             <div className="bookImage">
-
+                                
                                     <img src={String(item.volumeInfo.imageLinks.thumbnail)} />
 
                             </div>
@@ -80,11 +97,16 @@ class ReactBox extends React.Component {
                 </td>
             </tr>
             <tr>
-                <div id="hidden_descritpion" className="hidden">></div>
+                <div id="hidden_descritpion" className="hidden">
+                    <h1>Hello</h1>
+                </div>
+
             </tr>
         </tr>
         )
     }
+
+
 }
 
 ReactDOM.render(<ReactBox />, document.getElementById('myDiv'))

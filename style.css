@@ -22,7 +22,7 @@ html {
     height: auto;
     padding: 0;
     margin: 0;
-    border: 2px solid mediumturquoise;
+
     transition: 1s transform;
 }
 
@@ -32,7 +32,7 @@ html {
     overflow: hidden;
     height:  10vw;
     width: 25vw;
-    border: 2px solid purple;
+
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
     padding: 0;
 }
@@ -54,7 +54,7 @@ html {
     -webkit-transition: 1s;
     transform-origin: 0px 0px;
     -webkit-transform-origin: 0px 0px;
-    border: 2px solid red;
+
 
 
     padding: 0;
@@ -69,6 +69,7 @@ td {
     float: left;
     width: 44%;
     font-size: 1vw;
+    left: 7%;
     line-height: 1.2;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -77,7 +78,7 @@ td {
     -ms-user-select: none;
     user-select: none;
     cursor: default;
-    border: 2px solid green;
+
     margin: 0;
     position: relative;
     top: 25%;
@@ -89,7 +90,7 @@ td {
     width: 44%;
     margin:0;
   padding-bottom: 56.25%;
-    border: 2px solid rgb(85, 0, 243);
+
     overflow: hidden;
     
 }
@@ -108,7 +109,7 @@ td {
     margin-top: 2%;
     padding: 0;
     margin: 0;
-    border: 2px solid green;
+    left:7%;
     margin: 0;
     position: relative;
     top: 27%;
@@ -134,7 +135,7 @@ td {
     position: relative;
     width: 100%;
     bottom: 0%;
-    border: 2px solid blue;
+
 }
 
 .fadeout {
@@ -154,7 +155,7 @@ td {
 }
 .hidden{
 
-    display: none;
+    display: block;
 }
 .show{
     position: absolute;
