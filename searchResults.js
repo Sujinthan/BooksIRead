@@ -72,7 +72,8 @@ class ReactBox extends React.Component {
             <tr>
                 <input type="text" id="usersearch" onKeyUp={this.handleKeyUp} />
             </tr>
-            <tr>
+            <tr className="MainHolder">
+                <div className="MainHolderDiv">
                 <td className="MainContainer"> {this.state.results.map((item) => {
                     return <td className="container">
                         <div className="book" onClick={() => {this.handleClick(item)}}>
@@ -95,6 +96,7 @@ class ReactBox extends React.Component {
                     </td>
                 })}
                 </td>
+                </div>
             </tr>
             <tr>
                 <div id="hidden_descritpion" className="hidden">
