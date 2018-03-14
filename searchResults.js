@@ -100,7 +100,6 @@ class ReactBox extends React.Component {
             </tr>
             <tr>
                 <div id="hidden_descritpion" className="hidden">
-                    <h1>Hello</h1>
                 </div>
 
             </tr>

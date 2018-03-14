@@ -20,13 +20,12 @@ html {
 
 .MainHolder {
     position: absolute;
-
-    width: 100%;
+    width: 102vh;
     top:100%;
     height: 100vw;
     overflow-y:auto;
-    overflow-x:auto;
-    transform:rotate(-90deg) translateY(-10px);
+    overflow-x:hidden;
+    transform:rotate(-90deg) translateY(-10px) translateX(0%);
     transform-origin:left top;
     padding: 0;
     margin: 0;
@@ -38,15 +37,14 @@ html {
     z-index: 10;
 }
 .MainHolder > .MainHolderDiv{
-transform:rotate(90deg) translateY(20%);
-transform-origin: left top;
+    transform:rotate(90deg) translateY(30%);
+    transform-origin: left top;
 }
-.MainHolder .MainHolderDiv{
-    
+ .MainHolderDiv{
+    padding: 0;
     margin: 0 auto;
-    position: fixed;
-    border: 1px solid magenta;
-    left:25%;
+    position: relative;
+    left:85vh;
 
 }
 
@@ -74,8 +72,7 @@ transform-origin: left top;
 }
 
 .container {
-position: relative;
-    border: 1px solid blue;
+    position: relative;
     width: 100%;
     height: auto;
     transition: 1s transform;
@@ -178,8 +175,9 @@ td {
     transition: opacity 0.4s ease-in-out;
 }
 .hidden{
-
-    display: block;
+    position: fixed;
+    border: 1px solid rgb(167, 0, 103);
+    bottom: 0%;
 }
 .show{
     position: absolute;
