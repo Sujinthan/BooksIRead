@@ -135,6 +135,13 @@ class ReactBox extends React.Component {
 
 ReactDOM.render(<ReactBox />, document.getElementById('myDiv'));
 
+
+/*
+    The code below are written by lukasklein.
+    The code can be found at https://github.com/lukasklein/itunes-colors.
+
+*/
+
 var ImageAnalyzer = function (image, callback) {
     var bgcolor, detailColor, findEdgeColor, findTextColors, init, isBlackOrWhite, isContrastingColor, isDarkColor, isDistinct, primaryColor, secondaryColor;
     bgcolor = primaryColor = secondaryColor = detailColor = null;
