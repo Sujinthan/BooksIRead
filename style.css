@@ -20,7 +20,7 @@ html {
 
 .MainHolder {
     position: absolute;
-    width: 102vh;
+    width: 105vh;
     top:100%;
     height: 100vw;
     overflow-y:auto;
@@ -156,35 +156,11 @@ td {
     position: relative;
     width: 100%;
     bottom: 0%;
-
 }
 
-.fadeout {
-    opacity: 0;
-    -moz-transition: opacity 0.4s ease-in-out;
-    -o-transition: opacity 0.4s ease-in-out;
-    -webkit-transition: opacity 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out;
-}
-
-.fadein {
-    opacity: 1;
-    -moz-transition: opacity 0.4s ease-in-out;
-    -o-transition: opacity 0.4s ease-in-out;
-    -webkit-transition: opacity 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out;
-}
 .hidden{
-    position: fixed;
-    border: 1px solid rgb(167, 0, 103);
-    bottom: 0%;
-}
-.show{
     position: absolute;
     bottom: 0%;
-    width:100%;
-    top:100%;
-    right: 0%;
-    padding-top:75%;
-    display: table-cell;
+    width: 100%;
+    left: 0;
 }
