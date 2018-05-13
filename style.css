@@ -1,5 +1,5 @@
 body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px 'Raleway', sans-serif;
     position: relative;
     height: 100%;
     padding: 0;
@@ -16,8 +16,15 @@ html {
     padding: 0;
     margin: 0;
     width: 100%;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
 }
-
+.mainTitle{
+    font-weight: 900;
+    font-size: 2vmax;
+    position: relative;
+    text-align: center;
+}
 .MainHolder {
     position: absolute;
     width: 105vh;
@@ -29,12 +36,27 @@ html {
     transform-origin:left top;
     padding: 0;
     margin: 0;
-    border: 1px solid red;;
+}
+.searchHolder{
+    position: relative;
+    width:100%;
+    height: 100%;
+    left:100%;
 }
 #usersearch{
-    position: relative;
-    top: 0%;
+    position: absolute;
+    line-height: 24px;
     z-index: 10;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:50%;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: 1px solid #DDD;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+    outline: 0;
+    padding: 8px 6px;
 }
 .MainHolder > .MainHolderDiv{
     transform:rotate(90deg) translateY(30%);
@@ -158,9 +180,49 @@ td {
     bottom: 0%;
 }
 
+
 .hidden{
     position: absolute;
-    bottom: 0%;
+    bottom:0;
+    z-index: -10;
     width: 100%;
+    height: 50%;
     left: 0;
+    overflow: hidden;
+}
+.detail{
+    
+    width:50%;
+}
+.hidden img {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(-50%, -50%);
+    height: auto;
+
+}
+.detail{
+    font-size: 1vmax;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    left: 37.5%;
+    transform: translate(-50%, -50%);
+}
+.secondary{
+    font-weight: 700;
+    font-size: 2vw;
+    position: absolute;
+    text-align: left;
+    left: 12.5%;
+
+
+}
+.scroll{
+    font-size: 1vw;
+    text-align: center;
+    position: absolute;
+    left: 50%;;
+    transform: translate(-50%, 0%);
 }

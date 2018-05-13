@@ -14,10 +14,10 @@ class ReactBox extends React.Component {
     }
 
     clickHandler(item) {
+        console.log(item)
         var image = new Image()
         image.crossorgin = ''
-
-        image.src = String(item.volumeInfo.imageLinks.thumbnail)
+        image.src = String(item.volumeInfo.imageLinks.thumbnail).replace("edge=curl&", '');
         image.className = "chmln__img"
         //var turn_chmln_onoff = false;
         var holder = document.createElement("div")
@@ -41,13 +41,22 @@ class ReactBox extends React.Component {
 
         if (this.state.item_detail == null) {
             this.setState({ item_detail: item })
+            //main.classList.add("hidden");
             main.appendChild(holder)
-           
-
+            ImageAnalyzer(String(item.volumeInfo.imageLinks.thumbnail), function (bgcolor, primaryColor, secondaryColor, detailColor) {
+                console.log("insie ImageAnalyzer")
+                $('.hidden').css('background-color', 'rgb(' + bgcolor + ')')
+                $('.primary').css('color', 'rgb(' + primaryColor + ')');
+                $('.secondary').css('color', 'rgb(' + secondaryColor + ')');
+                $('.detail').css('color', 'rgb(' + detailColor + ')');
+    
+            });
         }
         else if (this.state.item_detail.id == item.id) {
             while (main.firstChild) {
+               
                 main.removeChild(main.firstChild);
+                $('.hidden').css('background-color', 'rgb(255,255,255)');
             }
             this.setState({ item_detail: '' })
 
@@ -55,21 +64,23 @@ class ReactBox extends React.Component {
         }
         else {
             while (main.firstChild) {
+                //main.classList.add("hidden");
                 main.removeChild(main.firstChild);
 
             }
             main.appendChild(holder)
             this.setState({ item_detail: item })
+            ImageAnalyzer(String(item.volumeInfo.imageLinks.thumbnail), function (bgcolor, primaryColor, secondaryColor, detailColor) {
+                console.log("insie ImageAnalyzer")
+                $('.hidden').css('background-color', 'rgb(' + bgcolor + ')')
+                $('.primary').css('color', 'rgb(' + primaryColor + ')');
+                $('.secondary').css('color', 'rgb(' + secondaryColor + ')');
+                $('.detail').css('color', 'rgb(' + detailColor + ')');
+    
+            });
         }
         //$(".chmln").chameleon();
-        ImageAnalyzer(String(item.volumeInfo.imageLinks.thumbnail), function (bgcolor, primaryColor, secondaryColor, detailColor) {
-            console.log("insie ImageAnalyzer")
-            $('.hidden').css('background-color', 'rgb(' + bgcolor + ')')
-            $('.primary').css('color', 'rgb(' + primaryColor + ')');
-            $('.secondary').css('color', 'rgb(' + secondaryColor + ')');
-            $('.detail').css('color', 'rgb(' + detailColor + ')');
 
-        });
     }
     displayList() {
         var booktitle = this.state.value
@@ -94,8 +105,14 @@ class ReactBox extends React.Component {
     render() {
         const { visible } = this.state;
         return (<tr>
-            <tr>
+            <tr className="SearchHolder">
                 <input type="text" id="usersearch" onKeyUp={this.handleKeyUp} />
+               
+            </tr>
+            <tr >
+            <p className="scroll">
+            Scroll for more
+            </p>
             </tr>
             <tr className="MainHolder">
                 <div className="MainHolderDiv">
@@ -104,7 +121,7 @@ class ReactBox extends React.Component {
                             <div className="book" onClick={() => { this.handleClick(item) }}>
                                 <div className="bookImage">
 
-                                    <img crossorgin="*" id={String(item.id)} src={String(item.volumeInfo.imageLinks.thumbnail).replace("edge=curl&", '')} />
+                                    <img crossorgin="*" id={String(item.id)} src={String(item.volumeInfo.imageLinks.smallThumbnail).replace("edge=curl&", '')} />
 
                                 </div>
                                 <div className="title">
@@ -124,20 +141,24 @@ class ReactBox extends React.Component {
                 </div>
             </tr>
             <tr >
+
                 <div id="hidden_descritpion" className="hidden"></div>
+
             </tr>
         </tr>
         )
     }
-
-
 }
 
 ReactDOM.render(<ReactBox />, document.getElementById('myDiv'));
 
 
+$(window).scroll(function(){
+    $(".scroll").css("opacity", 1 - $(window).scrollTop() / 250);
+  });
+
 /*
-    The code below are written by lukasklein.
+    The code below is written by lukasklein.
     The code can be found at https://github.com/lukasklein/itunes-colors.
 
 */
